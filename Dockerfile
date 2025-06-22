@@ -21,8 +21,9 @@ WORKDIR /app
 RUN apt-get update && \
     apt-get install -y default-libmysqlclient-dev libssl1.1 openssl libssl-dev && \
     rm -rf /var/lib/apt/lists/*
+RUN mkdir -p /app/log
+VOLUME [ "/app/log" ]
 
-VOLUME [ "/log" ]
 COPY --from=builder /app/target/release/clodure_oriented_api /app/
 COPY --from=builder /app/memory_monitoring_and_load_testing.sh /app/
 

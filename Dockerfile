@@ -24,7 +24,7 @@ RUN apt-get update && \
 
 VOLUME [ "/log" ]
 COPY --from=builder /app/target/release/clodure_oriented_api /app/
-COPY --from=builder /app/memory_monitoring_and_load_testging.sh /app/memory_monitoring_and_load_testing.sh
+COPY --from=builder /app/memory_monitoring_and_load_testing.sh /app/
 
 # COPY --from=builder /app/.env /app/.env
 

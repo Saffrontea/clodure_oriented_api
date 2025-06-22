@@ -1,0 +1,16 @@
+[package]
+name = "infrastructure"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+domain = { path = "../domain" }
+application = { path = "../application" }
+r2d2 = "0.8.10"
+r2d2_sqlite = "0.30.0"
+rusqlite = { version = "0.36.0", features = ["bundled"] }
+uuid = { version = "1.6.1", features = ["v4", "serde"] }
+async-trait = "0.1.68"
+tokio = { version = "1.35.1", features = ["full"] }
+r2d2_mysql = "24"
+mysql = "26"

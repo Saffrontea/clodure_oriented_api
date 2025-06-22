@@ -16,20 +16,17 @@ pub fn user_error_to_response(err: UserError) -> Rejection {
     use warp::http::StatusCode;
     use warp::reject::custom;
 
-    let (code, message) = match err {
+    let (_code, message) = match err {
         UserError::NotFound(_) => (StatusCode::NOT_FOUND, err.to_string()),
         UserError::ValidationError(_) => (StatusCode::BAD_REQUEST, err.to_string()),
         UserError::DatabaseError(_) => (StatusCode::INTERNAL_SERVER_ERROR, err.to_string()),
     };
 
     #[derive(Debug)]
-    struct ApiError {
-        code: StatusCode,
-        message: String,
-    }
-    impl warp::reject::Reject for ApiError {}
+    struct ApiErrorMessage(String);
+    impl warp::reject::Reject for ApiErrorMessage {}
 
-    custom(ApiError { code, message })
+    custom(ApiErrorMessage(message))
 }
 
 // エラーをレスポンスに変換する関数

@@ -1,7 +1,7 @@
 use application::UserRepository;
 use domain::{CreateUserRequest, UpdateUserRequest, User, UserError};
 use r2d2::Pool;
-use r2d2_mysql::mysql::{prelude::*, params, Opts, OptsBuilder};
+use r2d2_mysql::mysql::{prelude::*, params};
 use r2d2_mysql::MySqlConnectionManager;
 use std::sync::Arc;
 use uuid::Uuid;

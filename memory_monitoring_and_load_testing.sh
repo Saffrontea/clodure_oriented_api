@@ -1,18 +1,18 @@
 #!/usr/bin/env bash
 
 # APIサーバー起動
-target/release/clodure_oriented_api &
+./clodure_oriented_api &
 API_PID=$!
 
 # メモリ監視（バックグラウンド）
 while true; do
   echo "$(date): $(ps -p $API_PID -o rss= | tr -d ' ') KB" >> ./log/memory_usage.log
   sleep 10
-done &
-LOOP_PID=$!
+done 
+# LOOP_PID=$!
 
-echo "API PID: $API_PID"
-echo "MEMORY MONITOR PID: $LOOP_PID"
+# echo "API PID: $API_PID"
+# echo "MEMORY MONITOR PID: $LOOP_PID"
 
 # # APIの起動待ち（必要に応じて調整）
 # sleep 3

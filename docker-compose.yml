@@ -10,6 +10,8 @@ services:
     ports:
       - "3030:3030"
     restart: unless-stopped
+    volumes:
+      - ./log:/app/log
 
   db:
     image: mysql:8.0

@@ -19,7 +19,7 @@ FROM debian:bullseye-slim
 WORKDIR /app
 
 RUN apt-get update && \
-    apt-get install -y default-libmysqlclient-dev libssl1.1 openssl libssl-dev && \
+    apt-get install -y default-libmysqlclient-dev libssl1.1 openssl libssl-dev procps && \
     rm -rf /var/lib/apt/lists/*
 RUN mkdir -p /app/log
 VOLUME [ "/app/log" ]
